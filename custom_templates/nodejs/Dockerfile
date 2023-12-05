@@ -1,1 +1,0 @@
-EXPOSE ${{ values.port }}
