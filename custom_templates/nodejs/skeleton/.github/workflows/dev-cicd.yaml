@@ -1,1 +1,15 @@
-
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::ACCOUNT:role/ROLE
+      - uses: aws-actions/amazon-ecr-login@v1
+      - uses: int128/create-ecr-repository-action@v1
+        id: ecr
+        with:
+          repository: ${{ github.repository }}
